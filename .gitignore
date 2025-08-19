@@ -3,37 +3,30 @@
 *.tfstate.*
 .terraform/
 .terraform.lock.hcl
-terraform.tfvars
-*.auto.tfvars
-crash.log
+terraform.tfplan
+terraform.tfstate
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
 
-# Terraform generated files
+# Generated files
 site/config.js
+site.zip
 
-# Environment files
+# Local env files
 .env
 .env.local
 .env.*.local
 
-# IDE files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
-
-# Dependencies
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-
-# Build outputs
-dist/
-build/
-.netlify/
-
-# Logs
-*.log

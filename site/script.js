@@ -2,15 +2,36 @@ class DailyMotivation {
   constructor() {
     this.questions = [];
     this.currentQuestion = null;
-    const today = new Date();
-    const startOfYear = new Date(today.getFullYear(), 0, 1);
-    const dayOfYear =
-      Math.floor((today - startOfYear) / (24 * 60 * 60 * 1000)) + 1;
-    this.config = window.CONFIG || {};
 
+    // Generate random values on each visit
+    this.config = {
+      dailySeed: Math.floor(Math.random() * 3651),
+      quoteSeed: Math.floor(Math.random() * 100),
+      themeColor: this.generateRandomColor(),
+      deployDate: new Date().toLocaleDateString(),
+      personalName: window.CONFIG?.personalName || "Developer",
+      githubUsername: window.CONFIG?.githubUsername || "",
+      linkedinUrl: window.CONFIG?.linkedinUrl || "",
+      twitterUsername: window.CONFIG?.twitterUsername || "",
+      totalQuestions: 3651,
+    };
 
     console.log("Daily seed:", this.config.dailySeed); // Debug log
     this.init();
+  }
+
+  generateRandomColor() {
+    const colors = [
+      "#3b82f6",
+      "#8b5cf6",
+      "#ef4444",
+      "#10b981",
+      "#f59e0b",
+      "#ec4899",
+      "#06b6d4",
+      "#84cc16",
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
   }
 
   async init() {
@@ -171,76 +192,47 @@ class DailyMotivation {
     const container = document.getElementById("challenge-container");
     const q = this.currentQuestion;
 
-    // Handle different question formats
-    let questionHtml = "";
-
-    if (q.options && Array.isArray(q.options)) {
-      // Multiple choice question
-      questionHtml = `
-                <div class="challenge-card">
-                    <div class="challenge-meta">
-                        <span class="difficulty ${(
-                          q.difficulty || "Medium"
-                        ).toLowerCase()}">${q.difficulty || "Medium"}</span>
-                        <span class="category">${
-                          q.category || "Programming"
-                        }</span>
-                    </div>
-                    <div class="question-text">${q.question}</div>
-                    <div class="options">
-                        ${q.options
-                          .map(
-                            (option, index) => `
-                            <label class="option">
-                                <input type="radio" name="answer" value="${index}">
-                                <span class="option-text">${option}</span>
-                            </label>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                    <div class="explanation" id="explanation" style="display: none;">
-                        <strong>Explanation:</strong> ${
-                          q.explanation || "No explanation available."
-                        }
-                    </div>
-                </div>
-            `;
-    } else {
-      // Open-ended question or coding challenge
-      questionHtml = `
-                <div class="challenge-card">
-                    <div class="challenge-meta">
-                        <span class="difficulty ${(
-                          q.difficulty || "Medium"
-                        ).toLowerCase()}">${q.difficulty || "Medium"}</span>
-                        <span class="category">${
-                          q.category || "Programming"
-                        }</span>
-                    </div>
-                    <div class="question-text">${
-                      q.question || q.title || "Challenge not available"
-                    }</div>
-                    ${
-                      q.description
-                        ? `<div class="description">${q.description}</div>`
-                        : ""
-                    }
-                    ${
-                      q.example
-                        ? `<div class="example"><strong>Example:</strong><pre>${q.example}</pre></div>`
-                        : ""
-                    }
-                    <div class="explanation" id="explanation" style="display: none;">
-                        <strong>Hint:</strong> ${
-                          q.explanation ||
-                          q.hint ||
-                          "Think step by step and consider edge cases."
-                        }
-                    </div>
-                </div>
-            `;
+    if (!q) {
+      container.innerHTML = '<div class="error">Question not available</div>';
+      return;
     }
+
+    // Extract difficulty and topic tags
+    const difficulty = q.difficulty || "Medium";
+    const topics = q.topicTags
+      ? q.topicTags.map((tag) => tag.name).join(", ")
+      : "Programming";
+
+    let questionHtml = `
+    <div class="challenge-card">
+      <div class="challenge-meta">
+        <span class="difficulty ${difficulty.toLowerCase()}">${difficulty}</span>
+        <span class="category">${topics}</span>
+      </div>
+      <div class="question-title">${q.title}</div>
+      <div class="question-content">${q.content || q.question}</div>
+      
+      ${
+        q.hints && q.hints.length > 0
+          ? `
+        <div class="hints" id="hints" style="display: none;">
+          <strong>💡 Hints:</strong>
+          <ul>
+            ${q.hints.map((hint) => `<li>${hint}</li>`).join("")}
+          </ul>
+        </div>
+      `
+          : ""
+      }
+      
+      <div class="explanation" id="explanation" style="display: none;">
+        <strong>Explanation:</strong> ${
+          q.explanation ||
+          "Think about the optimal approach and time complexity."
+        }
+      </div>
+    </div>
+  `;
 
     container.innerHTML = questionHtml;
   }

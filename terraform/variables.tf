@@ -4,6 +4,12 @@ variable "netlify_token" {
   sensitive   = true
 }
 
+variable "netlify_site_id" {
+  description = "Netlify Site ID"
+  type        = string
+  default     = "c0f7957a-20c5-45e9-be49-f35f0bb7cf84"
+}
+
 variable "site_name_prefix" {
   description = "Prefix for the site name"
   type        = string

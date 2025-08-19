@@ -14,9 +14,8 @@ resource "random_pet" "site_name" {
 # Daily seed for consistent question selection
 resource "random_integer" "daily_seed" {
   min = 0
-  max = 3650  # Your question count - 1
+  max = 3650
   keepers = {
-    # This value is stable for the entire day
     day = time_static.today.id
   }
 }
@@ -26,7 +25,6 @@ resource "random_integer" "quote_seed" {
   min = 1
   max = 100
   keepers = {
-    # This is also stable for the day
     day = time_static.today.id
   }
 }
@@ -39,14 +37,8 @@ resource "random_string" "theme_color" {
   numeric = true
   special = false
   keepers = {
-    # Use a stable weekly value
-    week = formatdate("YYYY-WW", time_static.today.rfc3339)
+    week = formatdate("YYYY-MM", time_static.today.rfc3339)
   }
-}
-
-# Create the Netlify site
-resource "netlify_site" "motivation_site" {
-  name = random_pet.site_name.id
 }
 
 # Create environment file for the site before deployment
@@ -67,13 +59,10 @@ window.CONFIG = {
 EOF
 }
 
-# Deploy the site using netlify_deploy resource
-resource "netlify_deploy" "motivation_deploy" {
-  site_id = netlify_site.motivation_site.id
-  dir     = abspath("${path.module}/../site")
-  
-  # Ensure config.js is created before deployment
-  depends_on = [
-    local_file.site_config
-  ]
+# Configure build settings for your existing site
+resource "netlify_site_build_settings" "blog" {
+  site_id           = var.netlify_site_id  # Direct reference to variable
+  publish_directory = "site"
+  production_branch = "main"
+  build_command     = "echo 'Static site - no build needed'"
 }

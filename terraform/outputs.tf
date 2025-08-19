@@ -1,11 +1,11 @@
 output "site_url" {
-  value       = netlify_site.motivation_site.ssl_url
+  value       = "https://wk-1-challenge.netlify.app"  # Replace with your actual site URL
   description = "Live site URL"
 }
 
 output "site_name" {
-  value       = netlify_site.motivation_site.name
-  description = "Generated site name"
+  value       = "wk-1-challenge"  # Replace with your actual site name
+  description = "Site name"
 }
 
 output "daily_question_index" {
@@ -14,7 +14,12 @@ output "daily_question_index" {
 }
 
 output "netlify_site_id" {
-  value       = netlify_site.motivation_site.id
+  value       = var.netlify_site_id
   description = "Netlify site ID"
   sensitive   = true
+}
+
+output "config_file_generated" {
+  value       = local_file.site_config.filename
+  description = "Path to generated config file"
 }

@@ -4,10 +4,10 @@ variable "netlify_token" {
   sensitive   = true
 }
 
-variable "netlify_site_id" {
-  description = "Netlify Site ID"
+variable "github_token" {
+  description = "GitHub Personal Access Token"
   type        = string
-  default     = "c0f7957a-20c5-45e9-be49-f35f0bb7cf84"
+  sensitive   = true
 }
 
 variable "site_name_prefix" {
@@ -16,33 +16,27 @@ variable "site_name_prefix" {
   default     = "daily-dev-motivation"
 }
 
-variable "github_repo" {
-  description = "GitHub repository URL"
-  type        = string
-  default     = ""
-}
-
-variable "terraform_org" {
-  description = "Terraform Cloud organization name"
+variable "github_username" {
+  description = "Your GitHub username"
   type        = string
 }
 
-variable "workspace_name" {
-  description = "Terraform Cloud workspace name"
+variable "github_repo_name" {
+  description = "Your GitHub repository name"
   type        = string
-  default     = "daily-dev-motivation"
+  default     = "wk-1"
+}
+
+variable "production_branch" {
+  description = "Branch to deploy from"
+  type        = string
+  default     = "main"
 }
 
 variable "personal_name" {
   description = "Your name for the site"
   type        = string
   default     = "Developer"
-}
-
-variable "github_username" {
-  description = "Your GitHub username"
-  type        = string
-  default     = ""
 }
 
 variable "linkedin_url" {
@@ -53,6 +47,12 @@ variable "linkedin_url" {
 
 variable "twitter_username" {
   description = "Your Twitter username (without @)"
+  type        = string
+  default     = ""
+}
+
+variable "custom_domain" {
+  description = "Custom domain for the site (optional)"
   type        = string
   default     = ""
 }

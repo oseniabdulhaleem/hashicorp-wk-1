@@ -1,11 +1,16 @@
 output "site_url" {
-  value       = "https://wk-1-challenge.netlify.app"  # Replace with your actual site URL
+  value       = "https://${netlify_site.main.name}.netlify.app"
   description = "Live site URL"
 }
 
 output "site_name" {
-  value       = "wk-1-challenge"  # Replace with your actual site name
-  description = "Site name"
+  value       = netlify_site.main.name
+  description = "Generated site name"
+}
+
+output "site_id" {
+  value       = netlify_site.main.id
+  description = "Netlify site ID"
 }
 
 output "daily_question_index" {
@@ -13,13 +18,13 @@ output "daily_question_index" {
   description = "Today's question index (for debugging)"
 }
 
-output "netlify_site_id" {
-  value       = var.netlify_site_id
-  description = "Netlify site ID"
-  sensitive   = true
+output "netlify_admin_url" {
+  value       = "https://app.netlify.com/sites/${netlify_site.main.name}"
+  description = "Netlify admin URL"
 }
 
-output "config_file_generated" {
-  value       = local_file.site_config.filename
-  description = "Path to generated config file"
+output "deploy_key_public" {
+  value       = netlify_deploy_key.key.public_key
+  description = "Deploy key public part"
+  sensitive   = false
 }

@@ -2,7 +2,14 @@ class DailyMotivation {
   constructor() {
     this.questions = [];
     this.currentQuestion = null;
+    const today = new Date();
+    const startOfYear = new Date(today.getFullYear(), 0, 1);
+    const dayOfYear =
+      Math.floor((today - startOfYear) / (24 * 60 * 60 * 1000)) + 1;
     this.config = window.CONFIG || {};
+
+
+    console.log("Daily seed:", this.config.dailySeed); // Debug log
     this.init();
   }
 

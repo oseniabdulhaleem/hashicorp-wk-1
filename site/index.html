@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Dev Motivation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">Daily Dev Motivation ⚡</h1>
+                <p class="subtitle" id="current-date"></p>
+                <div class="stats">
+                    <span class="stat" id="question-counter">Question #<span id="question-number"></span> of 3651</span>
+                    <span class="stat">Streak: <span id="streak-counter">0</span> days</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Daily Quote Section -->
+            <section class="quote-section">
+                <div class="section-header">
+                    <h2>💭 Today's Inspiration</h2>
+                </div>
+                <div class="quote-container" id="quote-container">
+                    <blockquote class="quote" id="daily-quote">Loading inspirational quote...</blockquote>
+                    <cite class="quote-author" id="quote-author"></cite>
+                </div>
+                <button class="share-btn" id="share-quote">Share Quote</button>
+            </section>
+
+            <!-- Daily Challenge Section -->
+            <section class="challenge-section">
+                <div class="section-header">
+                    <h2>🧠 Today's Challenge</h2>
+                    <button class="refresh-btn" id="refresh-challenge" title="Get different challenge">🔄</button>
+                </div>
+                <div class="challenge-container" id="challenge-container">
+                    <div class="loading">Loading today's challenge...</div>
+                </div>
+                <div class="challenge-actions">
+                    <button class="action-btn completed" id="mark-completed">✅ Mark Completed</button>
+                    <button class="action-btn hint" id="show-hint">💡 Show Hint</button>
+                    <button class="action-btn share" id="share-challenge">📤 Share Challenge</button>
+                </div>
+            </section>
+
+            <!-- Progress Section -->
+            <section class="progress-section">
+                <div class="section-header">
+                    <h2>📊 Your Progress</h2>
+                </div>
+                <div class="progress-stats">
+                    <div class="progress-item">
+                        <span class="progress-label">Challenges Completed</span>
+                        <span class="progress-value" id="completed-count">0</span>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">Current Streak</span>
+                        <span class="progress-value" id="current-streak">0 days</span>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">Best Streak</span>
+                        <span class="progress-value" id="best-streak">0 days</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <div class="section-header">
+                    <h2>🤝 Connect With Me</h2>
+                </div>
+                <div class="social-links" id="social-links">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+                <form class="contact-form" id="contact-form" netlify name="contact">
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message 📧</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Built with ❤️ using Terraform, Netlify & HCP Terraform</p>
+            <p class="deploy-info">
+                Deployed on <span id="deploy-date"></span> | 
+                <a href="https://github.com/your-username/daily-dev-motivation" target="_blank">View Source</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -24,7 +24,7 @@ variable "github_username" {
 variable "github_repo_name" {
   description = "Your GitHub repository name"
   type        = string
-  default     = "wk-1"
+  default     = "hashicorp-wk-1"
 }
 
 variable "production_branch" {

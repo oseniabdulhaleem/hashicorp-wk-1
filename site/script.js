@@ -629,6 +629,9 @@ class DailyMotivation {
     // Reset buttons
     document.getElementById("mark-completed").innerHTML = "✅ Mark Completed";
     document.getElementById("mark-completed").disabled = false;
+    document
+      .getElementById("mark-completed")
+      .classList.remove("success-bounce");
     document.getElementById("show-hint").innerHTML = "💡 Show Hint";
     document.getElementById("show-hint").disabled = false;
   }
@@ -679,7 +682,6 @@ class DailyMotivation {
 
     let current = 0;
     let best = 0;
-    let tempStreak = 0;
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -761,7 +763,9 @@ class DailyMotivation {
       notification.style.opacity = "0";
       notification.style.transform = "translateX(100%)";
       setTimeout(() => {
-        document.body.removeChild(notification);
+        if (document.body.contains(notification)) {
+          document.body.removeChild(notification);
+        }
       }, 300);
     }, 3000);
   }

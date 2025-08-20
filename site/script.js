@@ -72,7 +72,7 @@ class DailyMotivation {
         ],
         "hints": [
           "How can we reuse a previously computed palindrome to compute a larger palindrome?",
-          "If "aba" is a palindrome, is "xabax" a palindrome? Similarly is "xabay" a palindrome?"
+          "If 'aba' is a palindrome, is 'xabax' a palindrome? Similarly is 'xabay' a palindrome?"
         ]
       },
       {

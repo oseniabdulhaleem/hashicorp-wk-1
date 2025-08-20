@@ -52,23 +52,36 @@ class DailyMotivation {
       const response = await fetch("./questions.json");
       if (!response.ok) throw new Error("Failed to fetch questions");
       const data = await response.json();
-      this.questions = data.questions || data; // Handle different JSON structures
+
+      // Handle the specific structure of your questions.json file
+      if (Array.isArray(data) && data[0]?.data?.question) {
+        // Extract questions from the nested structure
+        this.questions = data.map((item) => item.data.question);
+      } else if (data.questions) {
+        // Handle if there's a questions property
+        this.questions = data.questions;
+      } else if (Array.isArray(data)) {
+        // Handle direct array
+        this.questions = data;
+      } else {
+        throw new Error("Invalid questions format");
+      }
+
+      console.log("Loaded questions:", this.questions.length); // Debug log
     } catch (error) {
       console.error("Error loading questions:", error);
       // Fallback questions
       this.questions = [
         {
-          question:
-            "What is the time complexity of searching in a binary search tree?",
-          options: ["O(n)", "O(log n)", "O(1)", "O(n log n)"],
-          correct: 1,
-          difficulty: "Medium",
-          category: "Data Structures",
-          explanation:
-            "In a balanced BST, search operations take O(log n) time.",
+          questionId: "1",
+          title: "Sample Question",
+          content: "This is a sample question for testing.",
+          difficulty: "Easy",
+          topicTags: [{ name: "Sample" }],
         },
       ];
     }
+   
   }
 
   setupUI() {
@@ -189,28 +202,36 @@ class DailyMotivation {
   }
 
   renderChallenge() {
-    const container = document.getElementById("challenge-container");
-    const q = this.currentQuestion;
+   const container = document.getElementById("challenge-container");
+   const q = this.currentQuestion;
 
-    if (!q) {
-      container.innerHTML = '<div class="error">Question not available</div>';
-      return;
-    }
+   if (!q) {
+     container.innerHTML = '<div class="error">Question not available</div>';
+     return;
+   }
 
-    // Extract difficulty and topic tags
-    const difficulty = q.difficulty || "Medium";
-    const topics = q.topicTags
-      ? q.topicTags.map((tag) => tag.name).join(", ")
-      : "Programming";
+   // Extract difficulty and topic tags
+   const difficulty = q.difficulty || "Medium";
+   const topics = q.topicTags
+     ? q.topicTags.map((tag) => tag.name).join(", ")
+     : "Programming";
 
-    let questionHtml = `
+   // Clean up the HTML content for display
+   const cleanContent = q.content
+     ? q.content
+         .replace(/<[^>]*>/g, " ")
+         .replace(/\s+/g, " ")
+         .trim()
+     : q.question || "No content available";
+
+   let questionHtml = `
     <div class="challenge-card">
       <div class="challenge-meta">
         <span class="difficulty ${difficulty.toLowerCase()}">${difficulty}</span>
         <span class="category">${topics}</span>
       </div>
       <div class="question-title">${q.title}</div>
-      <div class="question-content">${q.content || q.question}</div>
+      <div class="question-content">${cleanContent}</div>
       
       ${
         q.hints && q.hints.length > 0
@@ -226,15 +247,16 @@ class DailyMotivation {
       }
       
       <div class="explanation" id="explanation" style="display: none;">
-        <strong>Explanation:</strong> ${
+        <strong>Explanation:</strong> 
+        ${
           q.explanation ||
-          "Think about the optimal approach and time complexity."
+          "Think about the optimal approach and time complexity for this problem."
         }
       </div>
     </div>
   `;
 
-    container.innerHTML = questionHtml;
+   container.innerHTML = questionHtml;
   }
 
   setupEventListeners() {

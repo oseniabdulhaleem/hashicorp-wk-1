@@ -363,7 +363,7 @@ class DailyMotivation {
 
     // Add HUG Ibadan
     links.push(
-      `<a href="https://www.linkedin.com/company/hug-ibadan" target="_blank" class="social-link">
+      `<a href="https://www.linkedin.com/company/hashicorp-user-group-ibadan/" target="_blank" class="social-link">
         <span>🚀</span> HUG Ibadan
        </a>`
     );

@@ -13,11 +13,6 @@ output "site_id" {
   description = "Netlify site ID"
 }
 
-output "daily_question_index" {
-  value       = random_integer.daily_seed.result
-  description = "Today's question index (for debugging)"
-}
-
 output "netlify_admin_url" {
   value       = "https://app.netlify.com/sites/${netlify_site.main.name}"
   description = "Netlify admin URL"

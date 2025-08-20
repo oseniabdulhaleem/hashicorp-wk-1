@@ -3,241 +3,259 @@ class DailyMotivation {
     // Embed questions data directly
     this.questions = [
       {
-        "questionId": "1",
-        "questionFrontendId": "1",
-        "title": "Two Sum",
-        "content": "<p>Given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to <code>target</code></em>.</p>\n\n<p>You may assume that each input would have <strong><em>exactly</em> one solution</strong>, and you may not use the <em>same</em> element twice.</p>\n\n<p>You can return the answer in any order.</p>",
-        "difficulty": "Easy",
-        "topicTags": [
-          { "name": "Array" },
-          { "name": "Hash Table" }
-        ],
-        "hints": [
+        questionId: "1",
+        questionFrontendId: "1",
+        title: "Two Sum",
+        content:
+          "<p>Given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to <code>target</code></em>.</p>\n\n<p>You may assume that each input would have <strong><em>exactly</em> one solution</strong>, and you may not use the <em>same</em> element twice.</p>\n\n<p>You can return the answer in any order.</p>",
+        difficulty: "Easy",
+        topicTags: [{ name: "Array" }, { name: "Hash Table" }],
+        hints: [
           "A really brute force way would be to search for all possible pairs of numbers but that would be too slow.",
           "So, if we fix one of the numbers, say <code>x</code>, we have to scan the entire array to find the next number <code>y</code> which is <code>value - x</code> where value is the input parameter.",
-          "The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?"
-        ]
+          "The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?",
+        ],
       },
       {
-        "questionId": "2",
-        "questionFrontendId": "2",
-        "title": "Add Two Numbers",
-        "content": "<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum&nbsp;as a linked list.</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "Linked List" },
-          { "name": "Math" },
-          { "name": "Recursion" }
+        questionId: "2",
+        questionFrontendId: "2",
+        title: "Add Two Numbers",
+        content:
+          "<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum&nbsp;as a linked list.</p>",
+        difficulty: "Medium",
+        topicTags: [
+          { name: "Linked List" },
+          { name: "Math" },
+          { name: "Recursion" },
         ],
-        "hints": []
+        hints: [],
       },
       {
-        "questionId": "3",
-        "questionFrontendId": "3",
-        "title": "Longest Substring Without Repeating Characters",
-        "content": "<p>Given a string <code>s</code>, find the length of the <strong>longest</strong> <span data-keyword=\"substring-nonempty\"><strong>substring</strong></span> without duplicate characters.</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "Hash Table" },
-          { "name": "String" },
-          { "name": "Sliding Window" }
+        questionId: "3",
+        questionFrontendId: "3",
+        title: "Longest Substring Without Repeating Characters",
+        content:
+          '<p>Given a string <code>s</code>, find the length of the <strong>longest</strong> <span data-keyword="substring-nonempty"><strong>substring</strong></span> without duplicate characters.</p>',
+        difficulty: "Medium",
+        topicTags: [
+          { name: "Hash Table" },
+          { name: "String" },
+          { name: "Sliding Window" },
         ],
-        "hints": [
-          "Generate all possible substrings & check for each substring if it's valid and keep updating maxLen accordingly."
-        ]
+        hints: [
+          "Generate all possible substrings & check for each substring if it's valid and keep updating maxLen accordingly.",
+        ],
       },
       {
-        "questionId": "4",
-        "questionFrontendId": "4",
-        "title": "Median of Two Sorted Arrays",
-        "content": "<p>Given two sorted arrays <code>nums1</code> and <code>nums2</code> of size <code>m</code> and <code>n</code> respectively, return <strong>the median</strong> of the two sorted arrays.</p>",
-        "difficulty": "Hard",
-        "topicTags": [
-          { "name": "Array" },
-          { "name": "Binary Search" },
-          { "name": "Divide and Conquer" }
+        questionId: "4",
+        questionFrontendId: "4",
+        title: "Median of Two Sorted Arrays",
+        content:
+          "<p>Given two sorted arrays <code>nums1</code> and <code>nums2</code> of size <code>m</code> and <code>n</code> respectively, return <strong>the median</strong> of the two sorted arrays.</p>",
+        difficulty: "Hard",
+        topicTags: [
+          { name: "Array" },
+          { name: "Binary Search" },
+          { name: "Divide and Conquer" },
         ],
-        "hints": []
+        hints: [],
       },
       {
-        "questionId": "5",
-        "questionFrontendId": "5",
-        "title": "Longest Palindromic Substring",
-        "content": "<p>Given a string <code>s</code>, return <em>the longest</em> <span data-keyword=\"palindromic-string\"><em>palindromic</em></span> <span data-keyword=\"substring-nonempty\"><em>substring</em></span> in <code>s</code>.</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "Two Pointers" },
-          { "name": "String" },
-          { "name": "Dynamic Programming" }
+        questionId: "5",
+        questionFrontendId: "5",
+        title: "Longest Palindromic Substring",
+        content:
+          '<p>Given a string <code>s</code>, return <em>the longest</em> <span data-keyword="palindromic-string"><em>palindromic</em></span> <span data-keyword="substring-nonempty"><em>substring</em></span> in <code>s</code>.</p>',
+        difficulty: "Medium",
+        topicTags: [
+          { name: "Two Pointers" },
+          { name: "String" },
+          { name: "Dynamic Programming" },
         ],
-        "hints": [
+        hints: [
           "How can we reuse a previously computed palindrome to compute a larger palindrome?",
-          "If 'aba' is a palindrome, is 'xabax' a palindrome? Similarly is 'xabay' a palindrome?"
-        ]
+          "If 'aba' is a palindrome, is 'xabax' a palindrome? Similarly is 'xabay' a palindrome?",
+        ],
       },
       {
-        "questionId": "6",
-        "questionFrontendId": "6",
-        "title": "Zigzag Conversion",
-        "content": "<p>The string <code>\"PAYPALISHIRING\"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "String" }
-        ],
-        "hints": []
+        questionId: "6",
+        questionFrontendId: "6",
+        title: "Zigzag Conversion",
+        content:
+          '<p>The string <code>"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>',
+        difficulty: "Medium",
+        topicTags: [{ name: "String" }],
+        hints: [],
       },
       {
-        "questionId": "7",
-        "questionFrontendId": "7",
-        "title": "Reverse Integer",
-        "content": "<p>Given a signed 32-bit integer <code>x</code>, return <code>x</code><em> with its digits reversed</em>. If reversing <code>x</code> causes the value to go outside the signed 32-bit integer range <code>[-2<sup>31</sup>, 2<sup>31</sup> - 1]</code>, then return <code>0</code>.</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "Math" }
-        ],
-        "hints": []
+        questionId: "7",
+        questionFrontendId: "7",
+        title: "Reverse Integer",
+        content:
+          "<p>Given a signed 32-bit integer <code>x</code>, return <code>x</code><em> with its digits reversed</em>. If reversing <code>x</code> causes the value to go outside the signed 32-bit integer range <code>[-2<sup>31</sup>, 2<sup>31</sup> - 1]</code>, then return <code>0</code>.</p>",
+        difficulty: "Medium",
+        topicTags: [{ name: "Math" }],
+        hints: [],
       },
       {
-        "questionId": "8",
-        "questionFrontendId": "8",
-        "title": "String to Integer (atoi)",
-        "content": "<p>Implement the <code>myAtoi(string s)</code> function, which converts a string to a 32-bit signed integer.</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "String" }
-        ],
-        "hints": []
+        questionId: "8",
+        questionFrontendId: "8",
+        title: "String to Integer (atoi)",
+        content:
+          "<p>Implement the <code>myAtoi(string s)</code> function, which converts a string to a 32-bit signed integer.</p>",
+        difficulty: "Medium",
+        topicTags: [{ name: "String" }],
+        hints: [],
       },
       {
-        "questionId": "9",
-        "questionFrontendId": "9",
-        "title": "Palindrome Number",
-        "content": "<p>Given an integer <code>x</code>, return <code>true</code><em> if </em><code>x</code><em> is a </em><span data-keyword=\"palindrome-integer\"><em><strong>palindrome</strong></em></span><em>, and </em><code>false</code><em> otherwise</em>.</p>",
-        "difficulty": "Easy",
-        "topicTags": [
-          { "name": "Math" }
-        ],
-        "hints": ["Beware of overflow when you reverse the integer."]
+        questionId: "9",
+        questionFrontendId: "9",
+        title: "Palindrome Number",
+        content:
+          '<p>Given an integer <code>x</code>, return <code>true</code><em> if </em><code>x</code><em> is a </em><span data-keyword="palindrome-integer"><em><strong>palindrome</strong></em></span><em>, and </em><code>false</code><em> otherwise</em>.</p>',
+        difficulty: "Easy",
+        topicTags: [{ name: "Math" }],
+        hints: ["Beware of overflow when you reverse the integer."],
       },
       {
-        "questionId": "10",
-        "questionFrontendId": "10",
-        "title": "Regular Expression Matching",
-        "content": "<p>Given an input string <code>s</code>&nbsp;and a pattern <code>p</code>, implement regular expression matching with support for <code>'.'</code> and <code>'*'</code> where:</p>",
-        "difficulty": "Hard",
-        "topicTags": [
-          { "name": "String" },
-          { "name": "Dynamic Programming" },
-          { "name": "Recursion" }
+        questionId: "10",
+        questionFrontendId: "10",
+        title: "Regular Expression Matching",
+        content:
+          "<p>Given an input string <code>s</code>&nbsp;and a pattern <code>p</code>, implement regular expression matching with support for <code>'.'</code> and <code>'*'</code> where:</p>",
+        difficulty: "Hard",
+        topicTags: [
+          { name: "String" },
+          { name: "Dynamic Programming" },
+          { name: "Recursion" },
         ],
-        "hints": []
+        hints: [],
       },
       {
-        "questionId": "11",
-        "questionFrontendId": "11",
-        "title": "Container With Most Water",
-        "content": "<p>You are given an integer array <code>height</code> of length <code>n</code>. There are <code>n</code> vertical lines drawn such that the two endpoints of the <code>i<sup>th</sup></code> line are <code>(i, 0)</code> and <code>(i, height[i])</code>.</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "Array" },
-          { "name": "Two Pointers" },
-          { "name": "Greedy" }
+        questionId: "11",
+        questionFrontendId: "11",
+        title: "Container With Most Water",
+        content:
+          "<p>You are given an integer array <code>height</code> of length <code>n</code>. There are <code>n</code> vertical lines drawn such that the two endpoints of the <code>i<sup>th</sup></code> line are <code>(i, 0)</code> and <code>(i, height[i])</code>.</p>",
+        difficulty: "Medium",
+        topicTags: [
+          { name: "Array" },
+          { name: "Two Pointers" },
+          { name: "Greedy" },
         ],
-        "hints": [
+        hints: [
           "If you simulate the problem, it will be O(n^2) which is not efficient.",
-          "Try to use two-pointers. Set one pointer to the left and one to the right of the array."
-        ]
+          "Try to use two-pointers. Set one pointer to the left and one to the right of the array.",
+        ],
       },
       {
-        "questionId": "12",
-        "questionFrontendId": "12",
-        "title": "Integer to Roman",
-        "content": "<p>Seven different symbols represent Roman numerals with the following values:</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "Hash Table" },
-          { "name": "Math" },
-          { "name": "String" }
+        questionId: "12",
+        questionFrontendId: "12",
+        title: "Integer to Roman",
+        content:
+          "<p>Seven different symbols represent Roman numerals with the following values:</p>",
+        difficulty: "Medium",
+        topicTags: [
+          { name: "Hash Table" },
+          { name: "Math" },
+          { name: "String" },
         ],
-        "hints": []
+        hints: [],
       },
       {
-        "questionId": "13",
-        "questionFrontendId": "13",
-        "title": "Roman to Integer",
-        "content": "<p>Roman numerals are represented by seven different symbols:&nbsp;<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p>",
-        "difficulty": "Easy",
-        "topicTags": [
-          { "name": "Hash Table" },
-          { "name": "Math" },
-          { "name": "String" }
+        questionId: "13",
+        questionFrontendId: "13",
+        title: "Roman to Integer",
+        content:
+          "<p>Roman numerals are represented by seven different symbols:&nbsp;<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p>",
+        difficulty: "Easy",
+        topicTags: [
+          { name: "Hash Table" },
+          { name: "Math" },
+          { name: "String" },
         ],
-        "hints": [
-          "Problem is simpler to solve by working the string from back to front and using a map."
-        ]
+        hints: [
+          "Problem is simpler to solve by working the string from back to front and using a map.",
+        ],
       },
       {
-        "questionId": "14",
-        "questionFrontendId": "14",
-        "title": "Longest Common Prefix",
-        "content": "<p>Write a function to find the longest common prefix string amongst an array of strings.</p>",
-        "difficulty": "Easy",
-        "topicTags": [
-          { "name": "Array" },
-          { "name": "String" },
-          { "name": "Trie" }
-        ],
-        "hints": []
+        questionId: "14",
+        questionFrontendId: "14",
+        title: "Longest Common Prefix",
+        content:
+          "<p>Write a function to find the longest common prefix string amongst an array of strings.</p>",
+        difficulty: "Easy",
+        topicTags: [{ name: "Array" }, { name: "String" }, { name: "Trie" }],
+        hints: [],
       },
       {
-        "questionId": "15",
-        "questionFrontendId": "15",
-        "title": "3Sum",
-        "content": "<p>Given an integer array nums, return all the triplets <code>[nums[i], nums[j], nums[k]]</code> such that <code>i != j</code>, <code>i != k</code>, and <code>j != k</code>, and <code>nums[i] + nums[j] + nums[k] == 0</code>.</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "Array" },
-          { "name": "Two Pointers" },
-          { "name": "Sorting" }
+        questionId: "15",
+        questionFrontendId: "15",
+        title: "3Sum",
+        content:
+          "<p>Given an integer array nums, return all the triplets <code>[nums[i], nums[j], nums[k]]</code> such that <code>i != j</code>, <code>i != k</code>, and <code>j != k</code>, and <code>nums[i] + nums[j] + nums[k] == 0</code>.</p>",
+        difficulty: "Medium",
+        topicTags: [
+          { name: "Array" },
+          { name: "Two Pointers" },
+          { name: "Sorting" },
         ],
-        "hints": [
+        hints: [
           "So, we essentially need to find three numbers x, y, and z such that they add up to the given value.",
-          "For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y."
-        ]
+          "For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y.",
+        ],
       },
       {
-        "questionId": "16",
-        "questionFrontendId": "16",
-        "title": "3Sum Closest",
-        "content": "<p>Given an integer array <code>nums</code> of length <code>n</code> and an integer <code>target</code>, find three integers in <code>nums</code> such that the sum is closest to <code>target</code>.</p>",
-        "difficulty": "Medium",
-        "topicTags": [
-          { "name": "Array" },
-          { "name": "Two Pointers" },
-          { "name": "Sorting" }
+        questionId: "16",
+        questionFrontendId: "16",
+        title: "3Sum Closest",
+        content:
+          "<p>Given an integer array <code>nums</code> of length <code>n</code> and an integer <code>target</code>, find three integers in <code>nums</code> such that the sum is closest to <code>target</code>.</p>",
+        difficulty: "Medium",
+        topicTags: [
+          { name: "Array" },
+          { name: "Two Pointers" },
+          { name: "Sorting" },
         ],
-        "hints": []
-      }
+        hints: [],
+      },
     ];
 
     this.currentQuestion = null;
 
     // Generate random values on each visit
     this.config = {
-      dailySeed: Math.floor(Math.random() * this.questions.length),
-      quoteSeed: Math.floor(Math.random() * 100),
-      themeColor: this.generateRandomColor(),
+      dailySeed: this.getDailySeed(),
+      quoteSeed: this.getQuoteSeed(),
+      themeColor: "#3b82f6",
       deployDate: new Date().toLocaleDateString(),
-      personalName: window.CONFIG?.personalName || "Developer",
-      githubUsername: window.CONFIG?.githubUsername || "",
-      linkedinUrl: window.CONFIG?.linkedinUrl || "",
-      twitterUsername: window.CONFIG?.twitterUsername || "",
+      personalName: "Abdulhaleem Oseni", // Just hardcode these
+      githubUsername: "oseniabdulhaleem",
+      linkedinUrl: "https://linkedin.com/in/oseniabdulhaleem",
+      twitterUsername: "",
       totalQuestions: this.questions.length,
     };
 
     console.log("Daily seed:", this.config.dailySeed); // Debug log
     console.log("Total questions loaded:", this.questions.length); // Debug log
     this.init();
+  }
+
+  getDailySeed() {
+    // Generate consistent seed based on current date
+    const today = new Date();
+    const dayOfYear = Math.floor(
+      (today - new Date(today.getFullYear(), 0, 0)) / 86400000
+    );
+    return dayOfYear % this.questions.length;
+  }
+
+  getQuoteSeed() {
+    const today = new Date();
+    const dayOfYear = Math.floor(
+      (today - new Date(today.getFullYear(), 0, 0)) / 86400000
+    );
+    return (dayOfYear * 7) % 100;
   }
 
   generateRandomColor() {
@@ -403,8 +421,11 @@ class DailyMotivation {
       : "Programming";
 
     // Clean up the HTML content for display
-    const cleanContent = q.content 
-      ? q.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
+    const cleanContent = q.content
+      ? q.content
+          .replace(/<[^>]*>/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
       : "No content available";
 
     let questionHtml = `
@@ -416,8 +437,9 @@ class DailyMotivation {
         <div class="question-title">${q.title}</div>
         <div class="question-content">${cleanContent}</div>
         
-        ${q.hints && q.hints.length > 0
-          ? `
+        ${
+          q.hints && q.hints.length > 0
+            ? `
           <div class="hints" id="hints" style="display: none;">
             <strong>💡 Hints:</strong>
             <ul>
@@ -425,7 +447,7 @@ class DailyMotivation {
             </ul>
           </div>
         `
-          : ""
+            : ""
         }
         
         <div class="explanation" id="explanation" style="display: none;">
@@ -523,14 +545,14 @@ class DailyMotivation {
   showHint() {
     const hintsElement = document.getElementById("hints");
     const explanationElement = document.getElementById("explanation");
-    
+
     if (hintsElement) {
       hintsElement.style.display = "block";
     }
     if (explanationElement) {
       explanationElement.style.display = "block";
     }
-    
+
     document.getElementById("show-hint").innerHTML = "💡 Hint Shown";
   }
 

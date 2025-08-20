@@ -9,8 +9,6 @@
   GITHUB_USERNAME = "oseniabdulhaleem"
   LINKEDIN_URL = "https://linkedin.com/in/oseniabdulhaleem"
 
-[[plugins]]
-  package = "./netlify/plugins/generate-config"
 
 [[headers]]
   for = "/*"

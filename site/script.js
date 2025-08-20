@@ -5,7 +5,7 @@ class DailyMotivation {
 
     // Generate random values on each visit
     this.config = {
-      dailySeed: Math.floor(Math.random() * 3651),
+      dailySeed: Math.floor(Math.random() * 16),
       quoteSeed: Math.floor(Math.random() * 100),
       themeColor: this.generateRandomColor(),
       deployDate: new Date().toLocaleDateString(),
@@ -13,7 +13,7 @@ class DailyMotivation {
       githubUsername: window.CONFIG?.githubUsername || "",
       linkedinUrl: window.CONFIG?.linkedinUrl || "",
       twitterUsername: window.CONFIG?.twitterUsername || "",
-      totalQuestions: 3651,
+      totalQuestions: 16,
     };
 
     console.log("Daily seed:", this.config.dailySeed); // Debug log

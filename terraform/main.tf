@@ -6,46 +6,10 @@ provider "github" {
   token = var.github_token
 }
 
-# Generate daily seeds that change each day
-resource "time_static" "today" {}
-
-resource "random_integer" "daily_seed" {
-  min = 0
-  max = 3650
-  keepers = {
-    day = formatdate("YYYY-MM-DD", time_static.today.rfc3339)
-  }
-}
-
-resource "random_integer" "quote_seed" {
-  min = 1
-  max = 100
-  keepers = {
-    day = formatdate("YYYY-MM-DD", time_static.today.rfc3339)
-  }
-}
-
+# Simple random pet name for the site
 resource "random_pet" "site_name" {
   prefix = var.site_name_prefix
   length = 2
-}
-
-# Generate the config.js file with Terraform values
-resource "local_file" "site_config" {
-  filename = "${path.module}/../site/config.js"
-  content = <<EOF
-window.CONFIG = {
-  dailySeed: ${random_integer.daily_seed.result},
-  quoteSeed: ${random_integer.quote_seed.result},
-  themeColor: '#3b82f6',
-  deployDate: '${formatdate("YYYY-MM-DD", time_static.today.rfc3339)}',
-  personalName: '${var.personal_name}',
-  githubUsername: '${var.github_username}',
-  linkedinUrl: '${var.linkedin_url}',
-  twitterUsername: '${var.twitter_username}',
-  totalQuestions: 3651
-};
-EOF
 }
 
 # Create a deploy key for Netlify to access your repo
@@ -88,7 +52,6 @@ resource "netlify_site" "main" {
   custom_domain = var.custom_domain != "" ? var.custom_domain : null
 
   depends_on = [
-    local_file.site_config,
     github_repository_deploy_key.netlify_key
   ]
 }

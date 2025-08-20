@@ -12,8 +12,10 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# Generated files
-site/config.js
+# No longer need to ignore config.js since it's not generated
+# site/config.js  <-- REMOVED
+
+# Generated deployment archives
 site.zip
 
 # Local env files
@@ -30,3 +32,6 @@ site.zip
 # OS
 .DS_Store
 Thumbs.db
+
+# Node modules if you add any build process later
+node_modules/

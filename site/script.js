@@ -1,19 +1,29 @@
 class DailyMotivation {
   constructor() {
-    // Embed questions data directly
+    // Hardcoded configuration - no more dependency on external config.js
+    this.config = {
+      personalName: "Abdulhaleem Oseni",
+      githubUsername: "oseniabdulhaleem",
+      linkedinUrl: "https://linkedin.com/in/oseniabdulhaleem",
+      twitterUsername: "adel_wale",
+      deployDate: new Date().toLocaleDateString(),
+      themeColor: "#3b82f6",
+    };
+
+    // Hardcoded questions data
     this.questions = [
       {
         questionId: "1",
         questionFrontendId: "1",
         title: "Two Sum",
         content:
-          "<p>Given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return <em>indices of the two numbers such that they add up to <code>target</code></em>.</p>\n\n<p>You may assume that each input would have <strong><em>exactly</em> one solution</strong>, and you may not use the <em>same</em> element twice.</p>\n\n<p>You can return the answer in any order.</p>",
+          "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target. You may assume that each input would have exactly one solution, and you may not use the same element twice.",
         difficulty: "Easy",
         topicTags: [{ name: "Array" }, { name: "Hash Table" }],
         hints: [
           "A really brute force way would be to search for all possible pairs of numbers but that would be too slow.",
-          "So, if we fix one of the numbers, say <code>x</code>, we have to scan the entire array to find the next number <code>y</code> which is <code>value - x</code> where value is the input parameter.",
-          "The second train of thought is, without changing the array, can we use additional space somehow? Like maybe a hash map to speed up the search?",
+          "Try using a hash map to store numbers you've seen and their indices.",
+          "For each number, check if target - current number exists in your hash map.",
         ],
       },
       {
@@ -21,21 +31,25 @@ class DailyMotivation {
         questionFrontendId: "2",
         title: "Add Two Numbers",
         content:
-          "<p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers. The digits are stored in <strong>reverse order</strong>, and each of their nodes contains a single digit. Add the two numbers and return the sum&nbsp;as a linked list.</p>",
+          "You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each node contains a single digit. Add the two numbers and return the sum as a linked list.",
         difficulty: "Medium",
         topicTags: [
           { name: "Linked List" },
           { name: "Math" },
           { name: "Recursion" },
         ],
-        hints: [],
+        hints: [
+          "Remember to handle the carry when digits sum to more than 9.",
+          "Consider edge cases where lists have different lengths.",
+          "Don't forget about a final carry that creates a new node.",
+        ],
       },
       {
         questionId: "3",
         questionFrontendId: "3",
         title: "Longest Substring Without Repeating Characters",
         content:
-          '<p>Given a string <code>s</code>, find the length of the <strong>longest</strong> <span data-keyword="substring-nonempty"><strong>substring</strong></span> without duplicate characters.</p>',
+          "Given a string s, find the length of the longest substring without repeating characters.",
         difficulty: "Medium",
         topicTags: [
           { name: "Hash Table" },
@@ -43,7 +57,9 @@ class DailyMotivation {
           { name: "Sliding Window" },
         ],
         hints: [
-          "Generate all possible substrings & check for each substring if it's valid and keep updating maxLen accordingly.",
+          "Use a sliding window approach with two pointers.",
+          "Keep track of characters you've seen in the current window.",
+          "When you find a repeat, move the left pointer past the previous occurrence.",
         ],
       },
       {
@@ -51,21 +67,25 @@ class DailyMotivation {
         questionFrontendId: "4",
         title: "Median of Two Sorted Arrays",
         content:
-          "<p>Given two sorted arrays <code>nums1</code> and <code>nums2</code> of size <code>m</code> and <code>n</code> respectively, return <strong>the median</strong> of the two sorted arrays.</p>",
+          "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.",
         difficulty: "Hard",
         topicTags: [
           { name: "Array" },
           { name: "Binary Search" },
           { name: "Divide and Conquer" },
         ],
-        hints: [],
+        hints: [
+          "Think about binary search on the smaller array.",
+          "The median divides the combined array into two equal halves.",
+          "Use binary search to find the correct partition point.",
+        ],
       },
       {
         questionId: "5",
         questionFrontendId: "5",
         title: "Longest Palindromic Substring",
         content:
-          '<p>Given a string <code>s</code>, return <em>the longest</em> <span data-keyword="palindromic-string"><em>palindromic</em></span> <span data-keyword="substring-nonempty"><em>substring</em></span> in <code>s</code>.</p>',
+          "Given a string s, return the longest palindromic substring in s.",
         difficulty: "Medium",
         topicTags: [
           { name: "Two Pointers" },
@@ -73,70 +93,45 @@ class DailyMotivation {
           { name: "Dynamic Programming" },
         ],
         hints: [
-          "How can we reuse a previously computed palindrome to compute a larger palindrome?",
-          "If 'aba' is a palindrome, is 'xabax' a palindrome? Similarly is 'xabay' a palindrome?",
+          "Consider expanding around centers for each possible palindrome center.",
+          "Don't forget to check both odd and even length palindromes.",
+          "You can optimize by checking longer substrings first.",
         ],
       },
       {
         questionId: "6",
         questionFrontendId: "6",
-        title: "Zigzag Conversion",
+        title: "Reverse Integer",
         content:
-          '<p>The string <code>"PAYPALISHIRING"</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>',
+          "Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range, then return 0.",
         difficulty: "Medium",
-        topicTags: [{ name: "String" }],
-        hints: [],
+        topicTags: [{ name: "Math" }],
+        hints: [
+          "Pop the last digit using modulo operator.",
+          "Check for overflow before multiplying by 10.",
+          "Handle negative numbers correctly.",
+        ],
       },
       {
         questionId: "7",
         questionFrontendId: "7",
-        title: "Reverse Integer",
+        title: "Palindrome Number",
         content:
-          "<p>Given a signed 32-bit integer <code>x</code>, return <code>x</code><em> with its digits reversed</em>. If reversing <code>x</code> causes the value to go outside the signed 32-bit integer range <code>[-2<sup>31</sup>, 2<sup>31</sup> - 1]</code>, then return <code>0</code>.</p>",
-        difficulty: "Medium",
+          "Given an integer x, return true if x is a palindrome, and false otherwise.",
+        difficulty: "Easy",
         topicTags: [{ name: "Math" }],
-        hints: [],
+        hints: [
+          "Negative numbers are not palindromes.",
+          "You can reverse the number and compare, but watch for overflow.",
+          "Alternative: reverse only half the number to avoid overflow.",
+        ],
       },
       {
         questionId: "8",
         questionFrontendId: "8",
-        title: "String to Integer (atoi)",
-        content:
-          "<p>Implement the <code>myAtoi(string s)</code> function, which converts a string to a 32-bit signed integer.</p>",
-        difficulty: "Medium",
-        topicTags: [{ name: "String" }],
-        hints: [],
-      },
-      {
-        questionId: "9",
-        questionFrontendId: "9",
-        title: "Palindrome Number",
-        content:
-          '<p>Given an integer <code>x</code>, return <code>true</code><em> if </em><code>x</code><em> is a </em><span data-keyword="palindrome-integer"><em><strong>palindrome</strong></em></span><em>, and </em><code>false</code><em> otherwise</em>.</p>',
-        difficulty: "Easy",
-        topicTags: [{ name: "Math" }],
-        hints: ["Beware of overflow when you reverse the integer."],
-      },
-      {
-        questionId: "10",
-        questionFrontendId: "10",
-        title: "Regular Expression Matching",
-        content:
-          "<p>Given an input string <code>s</code>&nbsp;and a pattern <code>p</code>, implement regular expression matching with support for <code>'.'</code> and <code>'*'</code> where:</p>",
-        difficulty: "Hard",
-        topicTags: [
-          { name: "String" },
-          { name: "Dynamic Programming" },
-          { name: "Recursion" },
-        ],
-        hints: [],
-      },
-      {
-        questionId: "11",
-        questionFrontendId: "11",
         title: "Container With Most Water",
         content:
-          "<p>You are given an integer array <code>height</code> of length <code>n</code>. There are <code>n</code> vertical lines drawn such that the two endpoints of the <code>i<sup>th</sup></code> line are <code>(i, 0)</code> and <code>(i, height[i])</code>.</p>",
+          "You are given an integer array height of length n. Find two lines that together with the x-axis form a container that contains the most water.",
         difficulty: "Medium",
         topicTags: [
           { name: "Array" },
@@ -144,105 +139,150 @@ class DailyMotivation {
           { name: "Greedy" },
         ],
         hints: [
-          "If you simulate the problem, it will be O(n^2) which is not efficient.",
-          "Try to use two-pointers. Set one pointer to the left and one to the right of the array.",
+          "Use two pointers, one at each end of the array.",
+          "Move the pointer pointing to the shorter line.",
+          "The area is limited by the shorter of the two lines.",
+        ],
+      },
+      {
+        questionId: "9",
+        questionFrontendId: "9",
+        title: "3Sum",
+        content:
+          "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.",
+        difficulty: "Medium",
+        topicTags: [
+          { name: "Array" },
+          { name: "Two Pointers" },
+          { name: "Sorting" },
+        ],
+        hints: [
+          "Sort the array first to make it easier to avoid duplicates.",
+          "For each number, use two pointers to find pairs that sum to the negative of that number.",
+          "Skip duplicate values to avoid duplicate triplets.",
+        ],
+      },
+      {
+        questionId: "10",
+        questionFrontendId: "10",
+        title: "Valid Parentheses",
+        content:
+          "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.",
+        difficulty: "Easy",
+        topicTags: [{ name: "String" }, { name: "Stack" }],
+        hints: [
+          "Use a stack to keep track of opening brackets.",
+          "When you see a closing bracket, check if it matches the most recent opening bracket.",
+          "The string is valid if the stack is empty at the end.",
+        ],
+      },
+      {
+        questionId: "11",
+        questionFrontendId: "11",
+        title: "Merge Two Sorted Lists",
+        content:
+          "You are given the heads of two sorted linked lists list1 and list2. Merge the two lists into one sorted list.",
+        difficulty: "Easy",
+        topicTags: [{ name: "Linked List" }, { name: "Recursion" }],
+        hints: [
+          "Use a dummy head to simplify the logic.",
+          "Compare the values of the current nodes and choose the smaller one.",
+          "Don't forget to append any remaining nodes from either list.",
         ],
       },
       {
         questionId: "12",
         questionFrontendId: "12",
-        title: "Integer to Roman",
+        title: "Generate Parentheses",
         content:
-          "<p>Seven different symbols represent Roman numerals with the following values:</p>",
+          "Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.",
         difficulty: "Medium",
         topicTags: [
-          { name: "Hash Table" },
-          { name: "Math" },
           { name: "String" },
+          { name: "Dynamic Programming" },
+          { name: "Backtracking" },
         ],
-        hints: [],
+        hints: [
+          "Use backtracking to generate all possible combinations.",
+          "Keep track of the number of open and close parentheses used.",
+          "Only add a close parenthesis if it doesn't exceed the number of open ones.",
+        ],
       },
       {
         questionId: "13",
         questionFrontendId: "13",
-        title: "Roman to Integer",
+        title: "Search Insert Position",
         content:
-          "<p>Roman numerals are represented by seven different symbols:&nbsp;<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p>",
+          "Given a sorted array of distinct integers and a target value, return the index if the target is found. If not, return the index where it would be inserted.",
         difficulty: "Easy",
-        topicTags: [
-          { name: "Hash Table" },
-          { name: "Math" },
-          { name: "String" },
-        ],
+        topicTags: [{ name: "Array" }, { name: "Binary Search" }],
         hints: [
-          "Problem is simpler to solve by working the string from back to front and using a map.",
+          "Use binary search since the array is sorted.",
+          "If target is not found, return the position where it should be inserted.",
+          "Consider edge cases where target is smaller or larger than all elements.",
         ],
       },
       {
         questionId: "14",
         questionFrontendId: "14",
-        title: "Longest Common Prefix",
+        title: "Climbing Stairs",
         content:
-          "<p>Write a function to find the longest common prefix string amongst an array of strings.</p>",
+          "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
         difficulty: "Easy",
-        topicTags: [{ name: "Array" }, { name: "String" }, { name: "Trie" }],
-        hints: [],
+        topicTags: [
+          { name: "Math" },
+          { name: "Dynamic Programming" },
+          { name: "Memoization" },
+        ],
+        hints: [
+          "This is essentially the Fibonacci sequence.",
+          "To reach step n, you can come from step n-1 or step n-2.",
+          "Use dynamic programming to avoid recalculating the same values.",
+        ],
       },
       {
         questionId: "15",
         questionFrontendId: "15",
-        title: "3Sum",
+        title: "Maximum Subarray",
         content:
-          "<p>Given an integer array nums, return all the triplets <code>[nums[i], nums[j], nums[k]]</code> such that <code>i != j</code>, <code>i != k</code>, and <code>j != k</code>, and <code>nums[i] + nums[j] + nums[k] == 0</code>.</p>",
+          "Given an integer array nums, find the subarray with the largest sum, and return its sum.",
         difficulty: "Medium",
         topicTags: [
           { name: "Array" },
-          { name: "Two Pointers" },
-          { name: "Sorting" },
+          { name: "Divide and Conquer" },
+          { name: "Dynamic Programming" },
         ],
         hints: [
-          "So, we essentially need to find three numbers x, y, and z such that they add up to the given value.",
-          "For the two-sum problem, if we fix one of the numbers, say x, we have to scan the entire array to find the next number y.",
+          "Use Kadane's algorithm for an O(n) solution.",
+          "At each position, decide whether to extend the previous subarray or start a new one.",
+          "Keep track of both the current sum and the maximum sum seen so far.",
         ],
       },
       {
         questionId: "16",
         questionFrontendId: "16",
-        title: "3Sum Closest",
+        title: "Unique Paths",
         content:
-          "<p>Given an integer array <code>nums</code> of length <code>n</code> and an integer <code>target</code>, find three integers in <code>nums</code> such that the sum is closest to <code>target</code>.</p>",
+          "There is a robot on an m x n grid. The robot can only move either down or right at any point in time. How many unique paths are there to reach the bottom-right corner?",
         difficulty: "Medium",
         topicTags: [
-          { name: "Array" },
-          { name: "Two Pointers" },
-          { name: "Sorting" },
+          { name: "Math" },
+          { name: "Dynamic Programming" },
+          { name: "Combinatorics" },
         ],
-        hints: [],
+        hints: [
+          "This is a classic dynamic programming problem.",
+          "The number of ways to reach a cell is the sum of ways to reach the cell above and to the left.",
+          "You can also solve this using combinatorics: choose (m-1) rights from (m+n-2) total moves.",
+        ],
       },
     ];
 
     this.currentQuestion = null;
-
-    // Generate random values on each visit
-    this.config = {
-      dailySeed: this.getDailySeed(),
-      quoteSeed: this.getQuoteSeed(),
-      themeColor: "#3b82f6",
-      deployDate: new Date().toLocaleDateString(),
-      personalName: "Abdulhaleem Oseni", // Just hardcode these
-      githubUsername: "oseniabdulhaleem",
-      linkedinUrl: "https://linkedin.com/in/oseniabdulhaleem",
-      twitterUsername: "",
-      totalQuestions: this.questions.length,
-    };
-
-    console.log("Daily seed:", this.config.dailySeed); // Debug log
-    console.log("Total questions loaded:", this.questions.length); // Debug log
     this.init();
   }
 
   getDailySeed() {
-    // Generate consistent seed based on current date
     const today = new Date();
     const dayOfYear = Math.floor(
       (today - new Date(today.getFullYear(), 0, 0)) / 86400000
@@ -258,20 +298,6 @@ class DailyMotivation {
     return (dayOfYear * 7) % 100;
   }
 
-  generateRandomColor() {
-    const colors = [
-      "#3b82f6",
-      "#8b5cf6",
-      "#ef4444",
-      "#10b981",
-      "#f59e0b",
-      "#ec4899",
-      "#06b6d4",
-      "#84cc16",
-    ];
-    return colors[Math.floor(Math.random() * colors.length)];
-  }
-
   async init() {
     try {
       this.setupUI();
@@ -284,9 +310,6 @@ class DailyMotivation {
     }
   }
 
-  // Remove the loadQuestions method since questions are now embedded
-  // async loadQuestions() { ... } - REMOVED
-
   setupUI() {
     // Set current date
     document.getElementById("current-date").textContent =
@@ -298,11 +321,16 @@ class DailyMotivation {
       });
 
     // Set deploy date
-    document.getElementById("deploy-date").textContent =
-      this.config.deployDate || new Date().toLocaleDateString();
+    document.getElementById("deploy-date").textContent = this.config.deployDate;
 
     // Setup social links
     this.setupSocialLinks();
+
+    // Set theme color
+    document.documentElement.style.setProperty(
+      "--primary-color",
+      this.config.themeColor
+    );
   }
 
   setupSocialLinks() {
@@ -311,25 +339,33 @@ class DailyMotivation {
 
     if (this.config.githubUsername) {
       links.push(
-        `<a href="https://github.com/${this.config.githubUsername}" target="_blank" class="social-link">🐙 GitHub</a>`
+        `<a href="https://github.com/${this.config.githubUsername}" target="_blank" class="social-link">
+          <span>🐙</span> GitHub
+         </a>`
       );
     }
 
     if (this.config.linkedinUrl) {
       links.push(
-        `<a href="${this.config.linkedinUrl}" target="_blank" class="social-link">💼 LinkedIn</a>`
+        `<a href="${this.config.linkedinUrl}" target="_blank" class="social-link">
+          <span>💼</span> LinkedIn
+         </a>`
       );
     }
 
     if (this.config.twitterUsername) {
       links.push(
-        `<a href="https://twitter.com/${this.config.twitterUsername}" target="_blank" class="social-link">🐦 Twitter</a>`
+        `<a href="https://twitter.com/${this.config.twitterUsername}" target="_blank" class="social-link">
+          <span>🐦</span> Twitter
+         </a>`
       );
     }
 
-    // Add HUG Ibadan as required
+    // Add HUG Ibadan
     links.push(
-      '<a href="https://www.linkedin.com/company/hug-ibadan" target="_blank" class="social-link">🚀 HUG Ibadan</a>'
+      `<a href="https://www.linkedin.com/company/hug-ibadan" target="_blank" class="social-link">
+        <span>🚀</span> HUG Ibadan
+       </a>`
     );
 
     socialContainer.innerHTML = links.join("");
@@ -376,10 +412,36 @@ class DailyMotivation {
           "Clean code always looks like it was written by someone who cares.",
         author: "Robert C. Martin",
       },
+      {
+        content:
+          "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.",
+        author: "Martin Fowler",
+      },
+      {
+        content: "It's not a bug; it's an undocumented feature.",
+        author: "Unknown",
+      },
+      { content: "Talk is cheap. Show me the code.", author: "Linus Torvalds" },
+      {
+        content:
+          "The most important property of a program is whether it accomplishes the intention of its user.",
+        author: "C.A.R. Hoare",
+      },
+      {
+        content: "Programming is thinking, not typing.",
+        author: "Casey Patton",
+      },
+      {
+        content: "Good code is its own best documentation.",
+        author: "Steve McConnell",
+      },
+      {
+        content: "Code never lies, comments sometimes do.",
+        author: "Ron Jeffries",
+      },
     ];
 
-    // Use quote seed for consistent daily quote
-    const quoteIndex = (this.config.quoteSeed || 0) % quotes.length;
+    const quoteIndex = this.getQuoteSeed() % quotes.length;
     const dailyQuote = quotes[quoteIndex];
 
     document.getElementById("daily-quote").textContent = dailyQuote.content;
@@ -395,13 +457,10 @@ class DailyMotivation {
       return;
     }
 
-    // Use daily seed for consistent challenge
-    const questionIndex = (this.config.dailySeed || 0) % this.questions.length;
+    const questionIndex = this.getDailySeed();
     this.currentQuestion = this.questions[questionIndex];
 
     document.getElementById("question-number").textContent = questionIndex + 1;
-
-    console.log("Selected question:", this.currentQuestion); // Debug log
     this.renderChallenge();
   }
 
@@ -414,19 +473,10 @@ class DailyMotivation {
       return;
     }
 
-    // Extract difficulty and topic tags
     const difficulty = q.difficulty || "Medium";
     const topics = q.topicTags
       ? q.topicTags.map((tag) => tag.name).join(", ")
       : "Programming";
-
-    // Clean up the HTML content for display
-    const cleanContent = q.content
-      ? q.content
-          .replace(/<[^>]*>/g, " ")
-          .replace(/\s+/g, " ")
-          .trim()
-      : "No content available";
 
     let questionHtml = `
       <div class="challenge-card">
@@ -435,7 +485,7 @@ class DailyMotivation {
           <span class="category">${topics}</span>
         </div>
         <div class="question-title">${q.title}</div>
-        <div class="question-content">${cleanContent}</div>
+        <div class="question-content">${q.content}</div>
         
         ${
           q.hints && q.hints.length > 0
@@ -451,8 +501,8 @@ class DailyMotivation {
         }
         
         <div class="explanation" id="explanation" style="display: none;">
-          <strong>Explanation:</strong> 
-          Think about the optimal approach and time complexity for this problem. Consider different algorithms and their trade-offs.
+          <strong>💭 Think about it:</strong> 
+          Consider the time and space complexity of different approaches. What data structures might be helpful? Can you solve it iteratively and recursively?
         </div>
       </div>
     `;
@@ -461,13 +511,6 @@ class DailyMotivation {
   }
 
   setupEventListeners() {
-    // Answer checking for multiple choice
-    document.addEventListener("change", (e) => {
-      if (e.target.name === "answer") {
-        this.checkAnswer(parseInt(e.target.value));
-      }
-    });
-
     // Mark completed
     document.getElementById("mark-completed").addEventListener("click", () => {
       this.markCompleted();
@@ -487,7 +530,7 @@ class DailyMotivation {
       this.shareChallenge();
     });
 
-    // Refresh challenge (for testing)
+    // Refresh challenge
     document
       .getElementById("refresh-challenge")
       .addEventListener("click", () => {
@@ -500,34 +543,13 @@ class DailyMotivation {
     });
   }
 
-  checkAnswer(selectedIndex) {
-    if (!this.currentQuestion.options) return;
-
-    const correctIndex = this.currentQuestion.correct;
-    const options = document.querySelectorAll(".option");
-
-    options.forEach((option, index) => {
-      option.classList.remove("correct", "incorrect");
-      if (index === correctIndex) {
-        option.classList.add("correct");
-      } else if (index === selectedIndex && index !== correctIndex) {
-        option.classList.add("incorrect");
-      }
-    });
-
-    // Show explanation
-    document.getElementById("explanation").style.display = "block";
-
-    // Update progress if correct
-    if (selectedIndex === correctIndex) {
-      this.updateStreak();
-    }
-  }
-
   markCompleted() {
     const completedToday = this.getCompletedToday();
     if (completedToday) {
-      alert("You already completed today's challenge! 🎉");
+      this.showNotification(
+        "You already completed today's challenge! 🎉",
+        "success"
+      );
       return;
     }
 
@@ -535,11 +557,12 @@ class DailyMotivation {
     this.updateProgress();
 
     // Visual feedback
-    document.getElementById("mark-completed").innerHTML = "✅ Completed!";
-    document.getElementById("mark-completed").disabled = true;
+    const button = document.getElementById("mark-completed");
+    button.innerHTML = "✅ Completed!";
+    button.disabled = true;
+    button.classList.add("success-bounce");
 
-    // Confetti effect (simple version)
-    this.showSuccess();
+    this.showNotification("Great job! Challenge completed! 🎉", "success");
   }
 
   showHint() {
@@ -548,12 +571,14 @@ class DailyMotivation {
 
     if (hintsElement) {
       hintsElement.style.display = "block";
+      hintsElement.scrollIntoView({ behavior: "smooth" });
     }
     if (explanationElement) {
       explanationElement.style.display = "block";
     }
 
     document.getElementById("show-hint").innerHTML = "💡 Hint Shown";
+    document.getElementById("show-hint").disabled = true;
   }
 
   shareQuote() {
@@ -562,22 +587,36 @@ class DailyMotivation {
     const text = `${quote} ${author}\n\nDaily Dev Motivation: ${window.location.href}`;
 
     if (navigator.share) {
-      navigator.share({ text, url: window.location.href });
+      navigator.share({
+        title: "Daily Dev Motivation Quote",
+        text,
+        url: window.location.href,
+      });
     } else {
-      navigator.clipboard.writeText(text);
-      alert("Quote copied to clipboard!");
+      navigator.clipboard.writeText(text).then(() => {
+        this.showNotification("Quote copied to clipboard! 📋", "success");
+      });
     }
   }
 
   shareChallenge() {
     const questionNum = document.getElementById("question-number").textContent;
-    const text = `🧠 Just tackled coding challenge #${questionNum} on Daily Dev Motivation!\n\nCheck out today's challenge: ${window.location.href}`;
+    const questionTitle = this.currentQuestion.title;
+    const text = `🧠 Just tackled "${questionTitle}" (Challenge #${questionNum}) on Daily Dev Motivation!\n\nCheck out today's challenge: ${window.location.href}`;
 
     if (navigator.share) {
-      navigator.share({ text, url: window.location.href });
+      navigator.share({
+        title: "Daily Dev Challenge",
+        text,
+        url: window.location.href,
+      });
     } else {
-      navigator.clipboard.writeText(text);
-      alert("Challenge link copied to clipboard!");
+      navigator.clipboard.writeText(text).then(() => {
+        this.showNotification(
+          "Challenge link copied to clipboard! 📋",
+          "success"
+        );
+      });
     }
   }
 
@@ -586,6 +625,12 @@ class DailyMotivation {
     this.currentQuestion = this.questions[randomIndex];
     document.getElementById("question-number").textContent = randomIndex + 1;
     this.renderChallenge();
+
+    // Reset buttons
+    document.getElementById("mark-completed").innerHTML = "✅ Mark Completed";
+    document.getElementById("mark-completed").disabled = false;
+    document.getElementById("show-hint").innerHTML = "💡 Show Hint";
+    document.getElementById("show-hint").disabled = false;
   }
 
   // Progress tracking methods
@@ -603,7 +648,8 @@ class DailyMotivation {
       localStorage.getItem("completedChallenges") || "{}"
     );
     completed[today] = {
-      questionIndex: this.config.dailySeed || 0,
+      questionIndex: this.getDailySeed(),
+      questionTitle: this.currentQuestion.title,
       timestamp: new Date().toISOString(),
     };
     localStorage.setItem("completedChallenges", JSON.stringify(completed));
@@ -626,73 +672,98 @@ class DailyMotivation {
   }
 
   calculateStreaks(completed) {
-    const dates = Object.keys(completed).sort();
+    const dates = Object.keys(completed).sort(
+      (a, b) => new Date(b) - new Date(a)
+    );
     if (dates.length === 0) return { current: 0, best: 0 };
 
     let current = 0;
     let best = 0;
-    let streak = 0;
-    let today = new Date();
+    let tempStreak = 0;
 
-    // Check if completed today
-    const todayStr = today.toDateString();
-    if (completed[todayStr]) {
-      streak = 1;
-    }
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    // Calculate streaks backwards from today
-    for (let i = completed[todayStr] ? 1 : 0; i < dates.length; i++) {
+    // Calculate current streak
+    for (let i = 0; i < dates.length; i++) {
       const checkDate = new Date(today);
       checkDate.setDate(today.getDate() - i);
       const checkDateStr = checkDate.toDateString();
 
       if (completed[checkDateStr]) {
-        streak++;
+        current++;
       } else {
         break;
       }
     }
 
-    current = streak;
-
     // Calculate best streak
-    let tempStreak = 0;
-    for (let i = 0; i < dates.length; i++) {
-      const date = new Date(dates[i]);
-      const nextDate = i < dates.length - 1 ? new Date(dates[i + 1]) : null;
+    let consecutiveDays = 1;
+    for (let i = 0; i < dates.length - 1; i++) {
+      const currentDate = new Date(dates[i]);
+      const nextDate = new Date(dates[i + 1]);
+      const daysDiff = (currentDate - nextDate) / (24 * 60 * 60 * 1000);
 
-      tempStreak++;
-
-      if (!nextDate || nextDate - date > 24 * 60 * 60 * 1000) {
-        best = Math.max(best, tempStreak);
-        tempStreak = 0;
+      if (daysDiff === 1) {
+        consecutiveDays++;
+      } else {
+        best = Math.max(best, consecutiveDays);
+        consecutiveDays = 1;
       }
     }
+    best = Math.max(best, consecutiveDays);
 
-    return { current, best: Math.max(best, tempStreak) };
+    return { current, best };
   }
 
-  updateStreak() {
-    const today = new Date().toDateString();
-    let streak = JSON.parse(localStorage.getItem("dailyStreak") || "0");
-    const lastDate = localStorage.getItem("lastVisit");
+  showNotification(message, type = "info") {
+    // Create notification element
+    const notification = document.createElement("div");
+    notification.className = `notification notification-${type}`;
+    notification.textContent = message;
 
-    if (lastDate !== today) {
-      streak++;
-      localStorage.setItem("dailyStreak", streak);
-      localStorage.setItem("lastVisit", today);
-    }
-  }
+    // Style the notification
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 500;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s ease;
+      max-width: 300px;
+    `;
 
-  showSuccess() {
-    // Simple success animation
-    const button = document.getElementById("mark-completed");
-    button.style.transform = "scale(1.1)";
-    button.style.backgroundColor = "#22c55e";
+    // Set background color based on type
+    const colors = {
+      success: "#22c55e",
+      error: "#ef4444",
+      info: "#3b82f6",
+      warning: "#f59e0b",
+    };
+    notification.style.backgroundColor = colors[type] || colors.info;
 
+    // Add to page
+    document.body.appendChild(notification);
+
+    // Animate in
     setTimeout(() => {
-      button.style.transform = "scale(1)";
-    }, 200);
+      notification.style.opacity = "1";
+      notification.style.transform = "translateX(0)";
+    }, 100);
+
+    // Remove after delay
+    setTimeout(() => {
+      notification.style.opacity = "0";
+      notification.style.transform = "translateX(100%)";
+      setTimeout(() => {
+        document.body.removeChild(notification);
+      }, 300);
+    }, 3000);
   }
 
   showError(message) {
@@ -701,15 +772,17 @@ class DailyMotivation {
   }
 
   handleFormSubmit(e) {
-    // Netlify handles the form submission
     const submitBtn = document.querySelector(".submit-btn");
+    const originalText = submitBtn.innerHTML;
+
     submitBtn.innerHTML = "Sending... 📤";
     submitBtn.disabled = true;
 
-    // Re-enable after submission
+    // Simulate form submission delay
     setTimeout(() => {
-      submitBtn.innerHTML = "Send Message 📧";
+      submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
+      this.showNotification("Message sent successfully! 📧", "success");
     }, 2000);
   }
 }

@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Dev Motivation</title>
+    <title>Daily Dev Motivation - Coding Challenges & Inspiration</title>
+    <meta name="description" content="Daily coding challenges, motivational quotes, and programming inspiration to keep developers motivated and growing.">
+    <meta name="keywords" content="coding challenges, programming, daily motivation, leetcode, algorithms, developer inspiration">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
 <body>
     <div class="container">
@@ -16,7 +22,7 @@
                 <h1 class="title">Daily Dev Motivation ⚡</h1>
                 <p class="subtitle" id="current-date"></p>
                 <div class="stats">
-                    <span class="stat" id="question-counter">Question #<span id="question-number"></span> of 16</span>
+                    <span class="stat" id="question-counter">Challenge #<span id="question-number">1</span> of 16</span>
                     <span class="stat">Streak: <span id="streak-counter">0</span> days</span>
                 </div>
             </div>
@@ -32,7 +38,7 @@
                     <blockquote class="quote" id="daily-quote">Loading inspirational quote...</blockquote>
                     <cite class="quote-author" id="quote-author"></cite>
                 </div>
-                <button class="share-btn" id="share-quote">Share Quote</button>
+                <button class="share-btn" id="share-quote">Share Quote 📤</button>
             </section>
 
             <!-- Daily Challenge Section -->
@@ -81,27 +87,28 @@
                     <!-- Will be populated by JavaScript -->
                 </div>
                 <form class="contact-form" id="contact-form" netlify name="contact">
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message 📧</button>
-                </form>
-            </section>
-        </main>
+                   <div class="form-group">
+                       <input type="email" name="email" placeholder="Your Email" required>
+                   </div>
+                   <div class="form-group">
+                       <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+                   </div>
+                   <button type="submit" class="submit-btn">Send Message 📧</button>
+               </form>
+           </section>
+       </main>
 
-        <footer class="footer">
-            <p>Built with ❤️ using Terraform, Netlify & HCP Terraform</p>
-            <p class="deploy-info">
-                Deployed on <span id="deploy-date"></span> | 
-                <a href="https://github.com/oseniabdulhaleem/wk-1" target="_blank">View Source</a>
-            </p>
-        </footer>
-    </div>
+       <footer class="footer">
+           <p>Built with ❤️ by <strong>Abdulhaleem Oseni</strong></p>
+           <p class="deploy-info">
+               Deployed on <span id="deploy-date"></span> | 
+               <a href="https://github.com/oseniabdulhaleem/wk-1" target="_blank">View Source</a> |
+               <a href="https://www.linkedin.com/company/hug-ibadan" target="_blank">HUG Ibadan</a>
+           </p>
+       </footer>
+   </div>
 
-    <!-- <script src="config.js"></script> -->
-    <script src="script.js"></script>
+   <!-- No more config.js dependency -->
+   <script src="script.js"></script>
 </body>
 </html>

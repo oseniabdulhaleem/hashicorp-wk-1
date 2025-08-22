@@ -33,24 +33,6 @@ variable "production_branch" {
   default     = "main"
 }
 
-variable "personal_name" {
-  description = "Your name for the site"
-  type        = string
-  default     = "Developer"
-}
-
-variable "linkedin_url" {
-  description = "Your LinkedIn profile URL"
-  type        = string
-  default     = ""
-}
-
-variable "twitter_username" {
-  description = "Your Twitter username (without @)"
-  type        = string
-  default     = ""
-}
-
 variable "custom_domain" {
   description = "Custom domain for the site (optional)"
   type        = string
